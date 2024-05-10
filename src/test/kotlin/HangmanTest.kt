@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 
 class HangmanTest {
     @Test
-    fun `becomes word`() {
+    fun `save word`() {
         //Given
         val hangman = Hangman("Test")
         //When
