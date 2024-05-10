@@ -3,27 +3,18 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class HangmanTest {
-    @Test
-    fun `save word`() {
-        //Given
-        val hangman = Hangman("Test")
-        //When
-        hangman.startGame()
-        val result = hangman.guess(' ')
-        // Then
-        assertEquals("_ _ _ _ #  ", result)
-    }
+
 
     @Test
     fun `guessed one letter`() {
         //Given
         val hangman = Hangman("test")
         //When
-        hangman.startGame()
         val result = hangman.guess('e')
         //Then
         assertEquals("_ e _ _", result)
     }
+
     @Test
     fun `guessed two letters`() {
         //Given
@@ -39,9 +30,9 @@ class HangmanTest {
         //Given
         val hangman = Hangman("test")
         //When
-        hangman.startGame()
-        var result = hangman.guess('e')
-        result = hangman.guess('t')
+
+        hangman.guess('e')
+        val result = hangman.guess('t')
 
 
         //Then
@@ -53,9 +44,8 @@ class HangmanTest {
         //Given
         val hangman = Hangman("test")
         //When
-        hangman.startGame()
         val result = hangman.guess('a')
-        assertEquals("_ _ _ _ # a",result)
+        assertEquals("_ _ _ _ # a", result)
     }
 
     @Test
@@ -63,22 +53,33 @@ class HangmanTest {
         //Given
         val hangman = Hangman("test")
         //When
-        hangman.startGame()
         var result = hangman.guess('a')
         result = hangman.guess('t')
-        assertEquals("t _ _ t # a",result)
+        assertEquals("t _ _ t # a", result)
     }
+
     @Test
     fun `win the game by guessing all letters`() {
         // Given
         val hangman = Hangman("test")
         // When
-        hangman.startGame()
+        hangman.guess('t')
+        hangman.guess('e')
+        val result = hangman.guess('s')
+        // Then
+        assertEquals("Du hast gewonnen", result)
+    }
+
+    @Test
+    fun `guess letter after win`() {
+        //Given
+        val hangman = Hangman("test")
+        //When
         hangman.guess('t')
         hangman.guess('e')
         hangman.guess('s')
-        val result = hangman.guess('t')
-        // Then
-        assertEquals("Du hast gewonnen", result)
+        var result = hangman.guess('t')
+        //Then
+        assertEquals("Du hast bereits gewonnen, Spiel ist vorbei", result)
     }
 }
