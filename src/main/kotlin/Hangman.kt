@@ -9,22 +9,30 @@ class Hangman(
     private var guessedLetters = mutableSetOf<Char>()
     private var wrongLetters = mutableListOf<Char>()
 
+
     fun guess(letter: Char): String {
-        if(gameWon) return "Du hast bereits gewonnen, Spiel ist vorbei"
+        if (gameWon) {
+            return "Du hast bereits gewonnen, Spiel ist vorbei"
+        }
         checkLetter(letter)
         checkIfWon()
-        if(loseCounter==5){
+        if (loseCounter == 5) {
             return "Du hast verloren das Wort war $word du hast folgende Buchstaben geraten:${buildWrongLetters()}"
         }
-        if (gameWon) return "Du hast gewonnen"
+        if (gameWon) {
+            return "Du hast gewonnen"
+        }
         return buildCurrentWord() + buildWrongLetters()
     }
 
+
     private fun checkLetter(letter: Char) {
-        if (letter in word && letter !in guessedLetters) {
+        if (letter !in word || letter in guessedLetters) {
+            if (letter !in wrongLetters) {
+                wrongLetters.add(letter)
+            }
+        } else {
             guessedLetters.add(letter)
-        } else if (letter !in wrongLetters) {
-            wrongLetters.add(letter)
         }
     }
 
@@ -42,13 +50,12 @@ class Hangman(
     }
 
     private fun buildWrongLetters(): String {
-         if (wrongLetters.isEmpty()) {
-          return   ""
+        if (wrongLetters.isEmpty()) {
+            return ""
         } else {
             loseCounter++
-           return  " # " + wrongLetters.joinToString(" ")
+            return " # " + wrongLetters.joinToString(" ")
         }
     }
-
 
 }
