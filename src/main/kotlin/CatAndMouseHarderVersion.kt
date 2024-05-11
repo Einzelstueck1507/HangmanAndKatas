@@ -8,8 +8,14 @@ fun catMouse(str:String,number:Int):String{
     if(cat < 0 || mouse < 0 || dog < 0){
         return "boring without all three"
     }
+
+    if(dog>cat&&dog<mouse){
+        return "Protected!"
+    }
+
     if (cat-mouse<number){
         return "Caught!"
     }
-    return ""
+
+    return "Escaped"
 }

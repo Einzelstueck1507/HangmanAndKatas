@@ -20,5 +20,12 @@ class CatsAndMouseHarderVersionTest {
         //Then
         assertEquals("boring without all three",catMouse(str,number))
     }
+    @Test
+    fun `Dog protects mouse`(){
+        var str = "...C....D....m......."
+        val number = 13
+        assertEquals("Protected!",catMouse(str,number))
+    }
+
 
 }
