@@ -13,9 +13,9 @@ fun catMouse(str:String,number:Int):String{
         return "Protected!"
     }
 
-    if (cat-mouse<number){
+    if (mouse-number<cat){
         return "Caught!"
     }
 
-    return "Escaped"
+    return "Escaped!"
 }

@@ -27,5 +27,12 @@ class CatsAndMouseHarderVersionTest {
         assertEquals("Protected!",catMouse(str,number))
     }
 
+    @Test
+    fun`Mouse escaped`(){
+        var str = ".....C............m......D"
+        val number = 5
+        assertEquals("Escaped!",catMouse(str,number))
+    }
+
 
 }
