@@ -82,4 +82,20 @@ class HangmanTest {
         //Then
         assertEquals("Du hast bereits gewonnen, Spiel ist vorbei", result)
     }
+
+    @Test
+    fun `lose game`(){
+        //Given
+        val hangman = Hangman("test")
+        //When
+        hangman.guess('f')
+        hangman.guess('g')
+        hangman.guess('b')
+        hangman.guess('d')
+        hangman.guess('u')
+        val result = hangman.guess('a')
+        //Then
+        assertEquals("Du hast verloren das Wort war test du hast folgende Buchstaben geraten: # f g b d u a",result)
+
+    }
 }
