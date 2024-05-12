@@ -13,7 +13,7 @@ fun catMouse(str:String,number:Int):String{
         return "Protected!"
     }
 
-    if (mouse-number<cat){
+    if (Math.abs(cat-mouse)<=number){
         return "Caught!"
     }
 
